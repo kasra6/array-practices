@@ -47,13 +47,120 @@
    // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
 
-    const ages = inventors.reduce(inventor => {
-      let totalAge = 0;
-      const age = inventor.passed - inventor.year;
-      totalAge += age;
-      return totalAge;
+    const totalYears = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year);
+    }, 0);
+    console.log(totalYears);
+
+    // const totalYears = inventors.reduce((total, inventor) => {
+    //   return total + (inventor.passed - inventor.year);
+    // }, 0);
+    //
+    // console.log(totalYears);
+
+
+
+    // let totalYears = 0;
+    //
+    // for (let i = 0; inventors.length; i++){
+    //   totalYears += inventors[i].year;
+    // }
+    //
+    // console.log(totalYears);
+
+    // const ages = inventors.reduce(inventor => {
+    //   let totalAge = 0;
+    //   const age = inventor.passed - inventor.year;
+    //   totalAge += age;
+    //   return totalAge;
+    // });
+
+    // 5. Sort the inventors by years lived
+
+    const oldest = inventors.sort((a, b) => {
+      const lastGuy = a.passed - a.year;
+      const nextGuy = b.passed - b.year;
+      return lastGuy > nextGuy ? -1 : 1;
     });
-    let totalAge = 0;
-    const age = inventors[0].passed - inventors[0].year;
-    totalAge += age;
-    console.log(totalAge);
+
+    console.log(oldest);
+
+    // const oldest = inventors.sort((a, b) => {
+    //   const lastGuy = a.passed - a.year;
+    //   const nextGuy = b.passed - b.year;
+    //   return lastGuy > nextGuy ? -1 : 1;
+    // });
+    //
+    // console.table(oldest);
+
+
+    // const oldest = inventors.sort((a, b) => {
+    //   const lastGuy = a.passed - a.year;
+    //   const nextGuy = b.passed - b.year;
+    //   return lastGuy > nextGuy ? -1 : 1;
+    // });
+    //
+    // console.table(oldest);
+
+    // const sortedList = inventors.sort((a, b) => {
+    //   const aAge = a.passed - a.year;
+    //   const bAge = b.passed - b.year;
+    //   if (aAge < bAge ? -1 : 1);
+    // });
+    //
+    // console.table(sortedList);
+
+
+    // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+        // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
+    // const allBoulvards = document.querySelector(".mw-category");
+    // const links = allBoulvards.querySelectorAll("a");
+    //
+    // const linksArray = Array.from(links);
+    //
+    // const deBoulvards = linksArray.filter(name => name.textContent.includes('de'));
+
+
+        // 7. sort Exercise
+    // Sort the people alphabetically by last name
+
+    const alpha = people.sort((lastOne, nextOne) => {
+      const [aLast, aFirst] = lastOne.split(', ');
+      const [bLast, bFirst] = nextOne.split(', ');
+      return aLast > bLast ? 1 : -1;
+    });
+    console.log(alpha);
+
+    // const alpha = people.sort((lastOne, nextOne) => {
+    //   const [aLast, aFirst] = lastOne.split(', ');
+    //   const [bLast, bFirst] = nextOne.split(', ');
+    //   return aLast > bLast ? 1 : -1;
+    // });
+    //
+    // console.log(alpha);
+
+    // 8. Reduce Exercise
+    // Sum up the instances of each of these
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van',
+                  'bike', 'walk', 'car', 'van', 'car', 'truck', 'Kasra' ];
+
+    const sum = data.reduce((obj, item) => {
+      if (!obj[item]){
+        obj[item] = 0;
+      }
+      obj[item]++;
+      return obj;
+    }, {});
+
+    console.log(sum);
+
+    // const transportation = data.reduce((obj, item) => {
+    //   if (!obj[item]){
+    //     obj[item] = 0;
+    //   }
+    //   obj[item]++;
+    //   return obj;
+    // },{});
+    //
+    // console.log(transportation);
